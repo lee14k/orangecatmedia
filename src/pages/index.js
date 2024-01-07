@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import BigHeadline from '@/components/BigHeadline'
 import CoolListEffect from '@/components/CoolListEffect'
+import LayoutWithSidebar from '@/components/LayoutWithSidebar'
 import TripleRowBox from '@/components/TripleRowBox'
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,6 @@ export default function Home() {
   spanTwo="Filler"
   spanThree="Filler"
     />
-    <CoolListEffect/>
-   </div>
+<LayoutWithSidebar/>   </div>
   )
 }
