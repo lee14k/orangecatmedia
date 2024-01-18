@@ -11,7 +11,7 @@ export default function Home() {
   return (
    <div className="tempcontainer justify-center flex-col items-center mb-0">
     <Temp/>
-    <h1 className="text-white text-6xl my-12">Coming Soon</h1>
+    <h1 className="text-white text-8xl pb-16 shadows">Coming Soon</h1>
 </div>
   )
 }
