@@ -26,9 +26,9 @@ const CoolListEffect = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative' }}  >
       <div 
-        className="absolute-service-list" 
+        className="absolute-service-list z-0" 
         style={{
           willChange: 'transform',
           transform: `translate3d(0px, ${translatePercentage}%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,

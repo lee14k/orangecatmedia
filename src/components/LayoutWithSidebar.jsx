@@ -3,7 +3,7 @@ import CoolListEffect from './CoolListEffect'; // Import your CoolListEffect com
 
 const LayoutWithSidebar = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex' }} className="relative z-0">
       <div style={{ width: '25%', padding: '20px' }}>
         {/* This is the sidebar column with your text/boxes */}
         <div style={{ marginBottom: '20px', background: '#f0f0f0', padding: '15px' }}>Box 1</div>

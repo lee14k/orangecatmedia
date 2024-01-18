@@ -10,8 +10,8 @@ const TripleRowBox = ({
   imgSrcTwo, 
   imgSrcThree 
 }) => (
-  <div className="grid grid-cols-3">
-    <div>
+  <div className="grid grid-cols-3 z-10 relative triplerowwrapper">
+    <div className="z-10 ">
         {showImages && <img src={imgSrcOne} alt="Description for image 1" />}
       <h2>{headOne}</h2>
       <span>{spanOne}</span>

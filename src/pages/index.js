@@ -5,13 +5,30 @@ import CoolListEffect from '@/components/CoolListEffect'
 import LayoutWithSidebar from '@/components/LayoutWithSidebar'
 import TripleRowBox from '@/components/TripleRowBox'
 import Temp from '@/components/Temp'
+import IdentityBox from '@/components/identitybox'
+import CustomerBox from '@/components/CustomerBox'
+import FAQ from '@/components/FAQ'
+import PortfolioBox from '@/components/PortfolioBox'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-   <div className="tempcontainer justify-center flex-col items-center mb-0">
-    <Temp/>
-    <h1 className="text-white text-8xl pb-16 shadows">Coming Soon</h1>
+    <div>
+   <div>
+    <BigHeadline children="Your New Design Partner"/>
+    <IdentityBox/>
+    <CustomerBox/>
+    <PortfolioBox/>
+    <TripleRowBox
+    headOne="filler"
+    headTwo="filler"
+    headThree="filler"
+    spanOne="filler"
+    spanTwo="filler"
+    spanThree="filler"/>
+    <LayoutWithSidebar/> 
+    <FAQ/>
+</div>
 </div>
   )
 }

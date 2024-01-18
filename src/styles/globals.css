@@ -9,6 +9,10 @@
     font-size: 9vw;
     font-weight: 800;
     line-height: 1em;
+    overflow-y: hidden !important;
+    padding-top:20px;
+
+
 }
 
 .absolute-service-list-wrapper{
@@ -18,6 +22,9 @@
     bottom: -80px;
     right: 40px;
     overflow: hidden;
+    overflow-y: hidden;
+    
+
 }
 
 .coollistcontainer{
@@ -31,6 +38,8 @@
     padding-left: 40px;
     padding-right: 40px;
     display: block;
+    overflow-y: hidden ;
+
 }
 
 .tempcontainer {
@@ -43,5 +52,11 @@
 
 .shadows {
   text-shadow: 2px 2px 4px #000000;
+
+}
+
+.triplerowwrapper{
+  background-color: #ed5724;
+  height:150px;
 
 }
