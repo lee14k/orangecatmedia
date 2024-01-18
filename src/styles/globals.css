@@ -32,3 +32,11 @@
     padding-right: 40px;
     display: block;
 }
+
+.tempcontainer {
+  background-color: #00303F;
+  height:100vh;
+  width:100vw;
+  display:flex;
+  justify-content: center;
+}
