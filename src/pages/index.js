@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
    <div className="tempcontainer">
-    <h1>Coming Soon</h1>
     <Temp/>
+    <h1 className="text-white text-6xl">Coming Soon</h1>
 </div>
   )
 }
