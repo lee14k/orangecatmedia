@@ -1,7 +1,7 @@
 import TripleRowBox from "./TripleRowBox"
 const CustomerBox =()=>{
     return (
-    <div className="triplerowwrapper my-24">
+    <div className="triplerowwrapper my-24 ">
         <div className="text-white my-24">
   < TripleRowBox useTripleRowWrapper={true}
     mainheader={true}

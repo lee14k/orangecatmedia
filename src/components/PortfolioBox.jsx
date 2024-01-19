@@ -45,19 +45,19 @@ export default function PortfolioBox (){
 return (
     <div className="portfolio pt-48">
         <h1 className="text-6xl big-headline ">Check out our work</h1>
-        <div className="w-full max-w-md px-2 py-16 sm:px-0">
+        <div className="w-full px-2 py-16 sm:px-0 ">
       <Tab.Group>
-        <Tab.List className="flex rounded-xl bg-blue-900/20 p-1">
+        <Tab.List className="flex rounded-xl bg-orange-900/20 p-1 mx-16">
           {Object.keys(categories).map((category) => (
             <Tab
               key={category}
               className={({ selected }) =>
                 classNames(
                   'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
-                  'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
+                  'ring-white/60 ring-offset-2 ring-offset-orange-400 focus:outline-none focus:ring-2',
                   selected
-                    ? 'bg-white text-blue-700 shadow'
-                    : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
+                    ? 'bg-white text-orange-700 shadow'
+                    : 'text-orange-100 hover:bg-white/[0.12] hover:text-white'
                 )
               }
             >
@@ -71,7 +71,7 @@ return (
               key={idx}
               className={classNames(
                 'rounded-xl bg-white p-3',
-                'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
+                'ring-white/60 ring-offset-2 ring-offset-orange-400 focus:outline-none focus:ring-2'
               )}
             >
               <ul>
@@ -92,7 +92,7 @@ return (
                       href="#"
                       className={classNames(
                         'absolute inset-0 rounded-md',
-                        'ring-blue-400 focus:z-10 focus:outline-none focus:ring-2'
+                        'ring-orange-400 focus:z-10 focus:outline-none focus:ring-2'
                       )}
                     />
                   </li>

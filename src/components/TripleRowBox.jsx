@@ -15,7 +15,7 @@ const TripleRowBox = ({
   <div className=''>
 
       {mainheader && 
-      <div className="triple py-24 ">
+      <div className="triple py-24 flex ">
       <h1 className="text-6xl">We serve all kinds of clients and customers</h1>
       </div>
       }

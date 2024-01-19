@@ -3,11 +3,35 @@ import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/outline'
 
 const faqs = [
   {
-    question: "What's the best thing about Switzerland?",
+    question: "What types of photo and video services do you offer?",
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+      "We offer a range of services including commercial photography, event coverage, promotional videos, and custom projects tailored to your needs.",
   },
-  // More questions...
+  {
+    question: "How do you price your photo and video services?",
+    answer:
+      "Our pricing is based on the type of project, duration, location, and specific client requirements. We offer customizable packages to fit various budgets.",
+  },
+  {
+    question: "How long does it take to get my final photos or videos?",
+    answer:
+      "Photos can be delivered as soon as within 48 hours of the shoot. Videos can take up to 2 weeks depending on the complexity of the project.",
+  },
+  {
+    question: "What platforms do you use for website design?",
+    answer:
+      "We specialize in creating websites using Nextjs, JavaScript, WordPress, Shopify, and custom HTML/CSS, depending on your specific needs, preferences, and given constraints.",
+  },
+  {
+    question: "Can you help with website maintenance and updates?",
+    answer:
+      "Absolutely, we offer ongoing support and maintenance services to keep your website up-to-date and running smoothly.",
+  },
+  {
+    question: "How long does it take to build a website?",
+    answer:
+      "The timeline varies based on the project's complexity, but typically, a basic website takes 4-6 weeks from concept to launch.",
+  },
 ]
 
 
