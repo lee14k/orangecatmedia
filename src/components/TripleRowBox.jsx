@@ -1,4 +1,5 @@
 const TripleRowBox = ({ 
+  mainheader=false,
   headOne, 
   headTwo, 
   headThree, 
@@ -11,6 +12,14 @@ const TripleRowBox = ({
   imgSrcThree,
   useTripleRowWrapper = true // New prop to control the application of triplerowwrapper class
 }) => (
+  <div className=''>
+
+      {mainheader && 
+      <div className="triple py-24 ">
+      <h1 className="text-6xl">We serve all kinds of clients and customers</h1>
+      </div>
+      }
+
   <div className={`grid grid-cols-3 z-10 relative ${useTripleRowWrapper ? 'triplerowwrapper' : ''}`}>
     <div className="z-10 ">
         {showImages && <img src={imgSrcOne} alt="Description for image 1" />}
@@ -27,6 +36,7 @@ const TripleRowBox = ({
       <h2 className="text-4xl">{headThree}</h2>
       <span>{spanThree}</span>
     </div>
+  </div>
   </div>
 );
 

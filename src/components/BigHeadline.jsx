@@ -6,7 +6,7 @@ const BigHeadline = ({ children }) => (
     </div>
     <div className="my-24 ml-48 ">
    < TripleRowBox useTripleRowWrapper={false}
-
+    mainheader={false}
      headOne="15+"
      headTwo="1.2M"
      headThree="100K+"
