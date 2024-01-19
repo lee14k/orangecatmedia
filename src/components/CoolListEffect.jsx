@@ -10,7 +10,7 @@ const CoolListEffect = () => {
 
     // Map the scroll position (0 to scrollableHeight) to the percentage range (-43 to 15)
     const scrollFraction = scrollY / scrollableHeight;
-    return 15 - scrollFraction * (5 - (-45));
+    return 15 - scrollFraction * 1.5*(2 - (-45));
   };
 
   const handleScroll = () => {
@@ -57,7 +57,7 @@ const CoolListEffect = () => {
         position: 'absolute',
         bottom: 0,
         pointerEvents: 'none',
-        top:'500px',
+        top:'300px',
         width:"2000px",
         zIndex:"100"
       }} />
