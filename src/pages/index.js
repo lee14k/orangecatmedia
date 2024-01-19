@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import BigHeadline from '@/components/BigHeadline'
 import CoolListEffect from '@/components/CoolListEffect'
 import LayoutWithSidebar from '@/components/LayoutWithSidebar'
@@ -9,13 +9,14 @@ import IdentityBox from '@/components/identitybox'
 import CustomerBox from '@/components/CustomerBox'
 import FAQ from '@/components/FAQ'
 import PortfolioBox from '@/components/PortfolioBox'
-const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({   weight: '400',
+subsets: ['latin'],})
 
 export default function Home() {
   return (
-    <div>
+    <div className="homewrapper">
    <div>
-    <BigHeadline children="Your New Design Partner"/>
+    <BigHeadline children="Orange Cat Media"/>
     <IdentityBox/>
     <CustomerBox/>
     <PortfolioBox/>
