@@ -9,8 +9,8 @@
     font-size: 9vw;
     font-weight: 800;
     line-height: 1em;
-    overflow-y: hidden !important;
-    padding-top:20px;
+    padding-top:200px;
+    
 
 
 }
@@ -21,8 +21,8 @@
     top: -80px;
     bottom: -80px;
     right: 40px;
-    overflow: hidden;
-    overflow-y: hidden;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
     
 
 }
@@ -68,4 +68,22 @@
 .identity-box{
   background-color:#e2d2a9;
   border-radius:25px;
+  height:430px;
+}
+
+.big-headline {
+  color:#ed5724;
+  font-weight:700;
+}
+
+.customers-wrapper{
+  background-color: #ed5724;
+  color:white;
+  height:450px;
+}
+
+.sidebarcontainer{
+  background-image: linear-gradient(white, rgba(255, 255, 255, 0));
+  height:800px;
+  padding-bottom:100px;
 }

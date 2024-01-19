@@ -5,7 +5,7 @@ import CoolListEffect from '@/components/CoolListEffect'
 import LayoutWithSidebar from '@/components/LayoutWithSidebar'
 import TripleRowBox from '@/components/TripleRowBox'
 import Temp from '@/components/Temp'
-import IdentityBox from '@/components/identitybox'
+import IdentityBox from '@/components/IdentityBox'
 import CustomerBox from '@/components/CustomerBox'
 import FAQ from '@/components/FAQ'
 import PortfolioBox from '@/components/PortfolioBox'
@@ -17,16 +17,13 @@ export default function Home() {
     <div className="homewrapper">
    <div>
     <BigHeadline children="Orange Cat Media"/>
+    <div className="my-16">
     <IdentityBox/>
+    </div>
     <CustomerBox/>
+    <div>
     <PortfolioBox/>
-    <TripleRowBox
-    headOne="filler"
-    headTwo="filler"
-    headThree="filler"
-    spanOne="filler"
-    spanTwo="filler"
-    spanThree="filler"/>
+    </div>
     <LayoutWithSidebar/> 
     <FAQ/>
 </div>

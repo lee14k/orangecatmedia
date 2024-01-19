@@ -3,10 +3,10 @@ import CoolListEffect from './CoolListEffect'; // Import your CoolListEffect com
 
 const LayoutWithSidebar = () => {
   return (
-    <div style={{ display: 'flex' }} className="relative z-0">
+    <div style={{ display: 'flex' }} className="relative z-0 sidebarcontainer">
       <div style={{ width: '25%', padding: '20px' }}>
-        {/* This is the sidebar column with your text/boxes */}
-        <div style={{ marginBottom: '20px', background: '#f0f0f0', padding: '15px' }}>Box 1</div>
+<h1 className="text-6xl">Our Services</h1>  
+  <div style={{ marginBottom: '20px', background: '#f0f0f0', padding: '15px' }}>Box 1</div>
         <div style={{ marginBottom: '20px', background: '#f0f0f0', padding: '15px' }}>Box 2</div>
         <div style={{ marginBottom: '20px', background: '#f0f0f0', padding: '15px' }}>Box 3</div>
         {/* Add more content here as needed */}
