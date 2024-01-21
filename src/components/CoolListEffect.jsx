@@ -58,7 +58,7 @@ const CoolListEffect = () => {
         bottom: 0,
         pointerEvents: 'none',
         top:'300px',
-        width:"2000px",
+        width:"1000px",
         zIndex:"100"
       }} />
     </div>
