@@ -1,8 +1,8 @@
 import TripleRowBox from "./TripleRowBox";
 const BigHeadline = ({ children }) => (
     <div>
-    <div className="flex justify-end">
-    <h1 className="big-headline text-8xl">{children}</h1>
+    <div className="flex justify-end ">
+    <h1 className="big-headline text-8xl pt-32">{children}</h1>
     </div>
     <div className="my-24 ml-48 ">
    < TripleRowBox useTripleRowWrapper={false}
