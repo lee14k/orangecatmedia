@@ -26,7 +26,7 @@ const TripleRowBox = ({
     <div className="z-10 ">
         {showImages && <img src={imgSrcOne} alt="Description for image 1" />}
       <h2 className="text-4xl font-bold	" style={{ color: headColor }}>{headOne}</h2>
-      <span style={{ color: spanColor }}>{spanOne}</span>
+      <span className="text-center" style={{ color: spanColor }}>{spanOne}</span>
     </div>
     <div>
         {showImages && <img src={imgSrcTwo} alt="Description for image 2" />}
