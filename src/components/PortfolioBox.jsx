@@ -9,13 +9,37 @@ export default function PortfolioBox (){
           {
             id: 1,
             title: 'Does drinking coffee make you smarter?',
-            img:''
+            img:'./photo1.jpg'
         
           },
           {
             id: 2,
             title: "So you've bought coffee... now what?",
-            img:''
+            img:'./photo2.jpg'
+
+          },
+          {
+            id: 3,
+            title: "So you've bought coffee... now what?",
+            img:'./photo3.jpg'
+
+          },
+          {
+            id: 4,
+            title: "So you've bought coffee... now what?",
+            img:'./photo4.jpg'
+
+          },
+          {
+            id: 5,
+            title: "So you've bought coffee... now what?",
+            img:'./photo5.jpg'
+
+          },
+          {
+            id: 6,
+            title: "So you've bought coffee... now what?",
+            img:'./photo6.jpg'
 
           },
         ],
@@ -80,19 +104,19 @@ return (
                 'ring-white/60 ring-offset-2 ring-offset-orange-400 focus:outline-none focus:ring-2'
               )}
             >
-              <ul>
+              <ul className="grid grid-cols-3 pb-48">
                 {posts.map((post) => (
                   <li
                     key={post.id}
                     className="relative rounded-md p-3 hover:bg-gray-100"
                   >
-                    <h3 className="text-sm font-medium leading-5">
-                      {post.title}
-                    </h3>
+                
 
-                    <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
-                    
-                    </ul>
+                    <div className="photoboxes">
+                    <img src=
+                      {post.img}
+                    />
+                      </div>
 
                     <a
                       href="#"
