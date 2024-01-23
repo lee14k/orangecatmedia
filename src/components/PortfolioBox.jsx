@@ -87,7 +87,7 @@ return (
                   'ring-white/60 ring-offset-2 ring-offset-orange-400 focus:outline-none focus:ring-2',
                   selected
                     ? 'bg-white text-orange-700 shadow'
-                    : 'text-orange-100 hover:bg-white/[0.12] hover:text-white'
+                    : 'text-orange-100 '
                 )
               }
             >
