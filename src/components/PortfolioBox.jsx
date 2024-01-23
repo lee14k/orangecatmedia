@@ -112,11 +112,10 @@ return (
                   >
                 
 
-                    <div className="photoboxes">
-                    <img src=
-                      {post.img}
-                    />
-                      </div>
+                <div
+                        className="photoboxes"
+                        style={{ backgroundImage: `url(${post.img})` }}
+                      ></div>
 
                     <a
                       href="#"
