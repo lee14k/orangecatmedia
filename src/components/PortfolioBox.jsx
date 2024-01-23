@@ -9,36 +9,42 @@ export default function PortfolioBox (){
           {
             id: 1,
             title: 'Does drinking coffee make you smarter?',
+            img:''
         
           },
           {
             id: 2,
             title: "So you've bought coffee... now what?",
-         
+            img:''
+
           },
         ],
         Video: [
           {
             id: 1,
             title: 'Is tech making coffee better or worse?',
-         
+            img:''
+
           },
           {
             id: 2,
             title: 'The most innovative things happening in coffee',
-           
+            img:''
+
           },
         ],
         Web: [
           {
             id: 1,
             title: 'Ask Me Anything: 10 answers to your questions about coffee',
-       
+            img:''
+
           },
           {
             id: 2,
             title: "The worst advice we've ever heard about coffee",
-          
+            img:''
+
           },
         ],
       })
