@@ -116,3 +116,10 @@ right:50px;
   background-color: #ed5724;
 
 }
+
+@media screen and (max-width: 800px) {
+.homewrapper{
+  width:1200px;
+}
+
+}

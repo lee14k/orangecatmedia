@@ -14,7 +14,7 @@ const CustomerBox = () => {
                         spanThree="from headshots to professional branding, we do it all"
                         className="orangebg ml-24"
                         imgSrcOne="/collar.png"
-                        imgSrcTwo="/yarn.png"
+                        imgSrcTwo="/whitecat.png"
                         imgSrcThree="/yarn.png"
                         showImages={true}
 />
