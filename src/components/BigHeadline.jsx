@@ -1,10 +1,18 @@
 import TripleRowBox from "./TripleRowBox";
+import Image from "next/image";
 const BigHeadline = ({ children }) => (
     <div>
             <p>We are who we are</p>
 
-    <div className="flex justify-end ">
-    <h1 className="big-headline text-8xl pt-32">{children}</h1>
+<div >
+    <div className="flex flex-col justify-end items-end">
+      <Image
+      src="/cat.png"
+      height={200}
+      width={400}
+      />
+    <h1 className="big-headline">{children}</h1>
+    </div>
     </div>
     <div className="my-24 ml-48  ">
    < TripleRowBox useTripleRowWrapper={false}

@@ -69,14 +69,16 @@
 }
 
 .identity-box{
+  position:relative;
   background-color:#e2d2a9;
   border-radius:25px;
-  height:430px;
+  height:400px;
 }
 
 .big-headline {
   color:#ed5724;
   font-weight:700;
+  font-size:120px;
 }
 
 .customers-wrapper{
@@ -96,4 +98,16 @@
   width:500px;
   background-size:cover ;
   background-position:center;
+}
+
+.iconboxone {
+  position:absolute;
+top:-150px;
+left:50px;
+}
+
+.iconboxtwo{
+  position:absolute;
+bottom:-50px;
+right:50px;
 }
