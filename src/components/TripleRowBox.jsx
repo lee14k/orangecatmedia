@@ -1,3 +1,4 @@
+import Image from "next/image";
 const TripleRowBox = ({ 
   mainheader=false,
   headOne, 
@@ -24,17 +25,17 @@ const TripleRowBox = ({
 
   <div className={`grid grid-cols-3 z-10 relative ${useTripleRowWrapper ? 'triplerowwrapper' : ''}`}>
     <div className="z-10 ">
-        {showImages && <img src={imgSrcOne} alt="Description for image 1" />}
+        {showImages && <Image src={imgSrcOne} alt="Description for image 1"  height={150} width={150}/>}
       <h2 className="text-4xl font-bold	" style={{ color: headColor }}>{headOne}</h2>
       <span className="text-center" style={{ color: spanColor }}>{spanOne}</span>
     </div>
     <div>
-        {showImages && <img src={imgSrcTwo} alt="Description for image 2" />}
+        {showImages && <Image src={imgSrcTwo} alt="Description for image 2" height={150} width={150}/>}
       <h2 className="text-4xl font-bold	" style={{ color: headColor }}>{headTwo}</h2>
       <span style={{ color: spanColor }}>{spanTwo}</span>
     </div>
     <div>
-        {showImages && <img src={imgSrcThree} alt="Description for image 3" />}
+        {showImages && <Image src={imgSrcThree} alt="Description for image 3"  height={150} width={150}/>}
       <h2 className="text-4xl font-bold	" style={{ color: headColor }}>{headThree}</h2>
       <span style={{ color: spanColor }}>{spanThree}</span>
     </div>
