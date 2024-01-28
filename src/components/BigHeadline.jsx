@@ -5,13 +5,12 @@ const BigHeadline = ({ children }) => (
             <p>We are who we are</p>
 
 <div >
-    <div className="flex flex-col justify-end items-end">
+    <div className="flex justify-center items-center">
       <Image
-      src="/cat.png"
-      height={200}
-      width={400}
+      src="/ocm.png"
+      height={600}
+      width={600}
       />
-    <h1 className="big-headline">{children}</h1>
     </div>
     </div>
     <div className="my-24 ml-48  ">
