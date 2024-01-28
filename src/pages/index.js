@@ -15,8 +15,11 @@ subsets: ['latin'],})
 export default function Home() {
   return (
     <div className="homewrapper">
+      
    <div>
+    
     <BigHeadline children="Orange Cat Media"/>
+    
     <div className="my-16">
     <IdentityBox/>
     </div>

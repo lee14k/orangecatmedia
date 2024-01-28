@@ -2,8 +2,15 @@ import TripleRowBox from "./TripleRowBox";
 import Image from "next/image";
 const BigHeadline = ({ children }) => (
     <div>
-            <p>We are who we are</p>
 
+        <div className="">
+        <div class="down-arrow"> </div>
+
+            <p className="introtextbox">We are a media company helping to get your brand looking sharp.
+          
+            </p>
+          
+            </div>
 <div >
     <div className="flex justify-center items-center">
       <Image
