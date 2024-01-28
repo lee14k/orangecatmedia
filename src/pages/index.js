@@ -29,6 +29,11 @@ export default function Home() {
     </div>
     <LayoutWithSidebar/> 
     <FAQ/>
+    <div>
+      <Image
+      src=""
+      />
+    </div>
 </div>
 </div>
   )
