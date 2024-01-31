@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Tab } from "@headlessui/react";
+import Image from "next/image";
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
@@ -89,7 +90,7 @@ export default function PortfolioBox (){
                                    className="flex-none w-1/3 p-3"
                                  >
                                    {idx === 0 ? ( // Check if it's the "Photo" category
-                                     <img src={`/api/imageProxy?imageId=${post.id}`} alt={post.title} style={{ width: '100%', height: 'auto' }} />
+                                     <img src={`/api/imageProxy?imageId=${post.id}`} alt={post.title} style={{ width: '100%', height: 'auto' }}  loading="lazy" />
                                    ) : (
                                      <div
                                        className="photoboxes"

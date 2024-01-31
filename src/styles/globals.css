@@ -80,12 +80,13 @@
   background-color: #ed5724;
   color:white;
   height:450px;
+  width:100%;
 }
 
 .sidebarcontainer{
-  background-image: linear-gradient(white, rgba(255, 255, 255, 0));
-  height:600px;
-  padding-bottom:100px;
+  background-image: linear-gradient(white, rgba(255, 255, 255, 0.5));
+  height:850px;
+  
 }
 
 .photoboxes{

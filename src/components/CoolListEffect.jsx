@@ -52,13 +52,13 @@ const CoolListEffect = () => {
         pointerEvents: 'none',
       }} />
       <div className="bottomgradient" style={{
-        height: '350px',
+        height: '550px',
         backgroundImage: 'linear-gradient(to top, white, rgba(255,255,255,0))',
         position: 'absolute',
         bottom: 0,
         pointerEvents: 'none',
         top:'300px',
-        width:"1000px",
+        width:"3500px",
         zIndex:"100"
       }} />
     </div>

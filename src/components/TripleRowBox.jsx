@@ -23,7 +23,7 @@ const TripleRowBox = ({
       </div>
       }
 
-  <div className={`grid grid-cols-3 z-10 relative triprowmob ${useTripleRowWrapper ? 'triplerowwrapper' : ''}`}>
+  <div className={`grid grid-cols-3 z-10 relative triprowmob gap-12 ${useTripleRowWrapper ? 'triplerowwrapper' : ''}`}>
     <div className="z-10 ">
         {showImages && <Image src={imgSrcOne} alt="Description for image 1"  height={150} width={150}/>}
       <h2 className="text-4xl font-bold	" style={{ color: headColor }}>{headOne}</h2>

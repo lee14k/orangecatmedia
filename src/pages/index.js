@@ -9,6 +9,8 @@ import IdentityBox from '@/components/IdentityBox'
 import CustomerBox from '@/components/CustomerBox'
 import FAQ from '@/components/FAQ'
 import PortfolioBox from '@/components/PortfolioBox'
+import ImageGallery from '@/components/ImageGallery'
+import ContactForm from '@/components/ContactForm'
 const poppins = Poppins({   weight: '400',
 subsets: ['latin'],})
 
@@ -30,9 +32,7 @@ export default function Home() {
     <LayoutWithSidebar/> 
     <FAQ/>
     <div>
-      <Image
-      src=""
-      />
+    <ContactForm/>
     </div>
 </div>
 </div>
