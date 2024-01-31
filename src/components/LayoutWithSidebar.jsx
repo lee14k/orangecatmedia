@@ -5,9 +5,9 @@ const LayoutWithSidebar = () => {
   return (
     <div style={{ display: 'flex' }} className="relative z-0 sidebarcontainer">
       <div style={{ width: '25%', padding: '20px' }}>
-<h1 className="text-6xl">Our Services</h1>  
-  <div style={{ marginBottom: '20px', padding: '15px' }}>Mix & match our areas of expertise to meet your exact needs</div>
-        <div style={{ marginBottom: '20px',  padding: '15px' }}>Don't see it listed? Reach out to us and we'll adapt </div>
+<h1 className="text-6xl py-12">Our Services</h1>  
+
+        <div className="needmore" style={{ marginBottom: '20px',  padding: '15px' }}><h4 className="text-2xl mb-10">Don't see it listed?</h4> <p>Contact us and we can figure out how to adapt to your needs.</p></div>
        
       </div>
       <div style={{ flex: 1 }}>

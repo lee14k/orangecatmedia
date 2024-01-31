@@ -1,47 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tab } from "@headlessui/react";
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
 export default function PortfolioBox (){
-    let [categories] = useState({
-        Photo: [
-          {
-            id: 1,
-            title: 'Does drinking coffee make you smarter?',
-            img:'./photo1.jpg'
+  const [categories, setCategories] = useState({
+    Photo: [
         
-          },
-          {
-            id: 2,
-            title: "So you've bought coffee... now what?",
-            img:'./photo2.jpg'
-
-          },
-          {
-            id: 3,
-            title: "So you've bought coffee... now what?",
-            img:'./photo3.jpg'
-
-          },
-          {
-            id: 4,
-            title: "So you've bought coffee... now what?",
-            img:'./photo4.jpg'
-
-          },
-          {
-            id: 5,
-            title: "So you've bought coffee... now what?",
-            img:'./photo5.jpg'
-
-          },
-          {
-            id: 6,
-            title: "So you've bought coffee... now what?",
-            img:'./photo6.jpg'
-
-          },
         ],
         Video: [
           {
@@ -72,6 +37,18 @@ export default function PortfolioBox (){
           },
         ],
       })
+      useEffect(() => {
+        // Fetch images from your API and update the Photo category
+        fetch('/api/images')
+          .then(response => response.json())
+          .then(data => {
+            setCategories(prevCategories => ({
+              ...prevCategories,
+              Photo: data // assuming 'data' is an array of image objects
+            }));
+          })
+          .catch(error => console.error('Error fetching images:', error));
+      }, []);
       return (
         <div className="portfolio pt-48">
             <h1 className="text-6xl big-headline">Check out our work</h1>
@@ -96,38 +73,35 @@ export default function PortfolioBox (){
           ))}
         </Tab.List>                 
                     <Tab.Panels className="mt-2">
+                      
                         {Object.values(categories).map((posts, idx) => (
-                            <Tab.Panel
-                                key={idx}
-                                className={classNames(
-                                    'rounded-xl bg-white p-3',
-                                    'ring-white/60 ring-offset-2 ring-offset-orange-400 focus:outline-none focus:ring-2'
-                                )}
-                            >
-                                <div className="flex overflow-x-auto pb-48">
-                                    {posts.map((post) => (
-                                        <div
-                                            key={post.id}
-                                            className="flex-none w-1/3 p-3"
-                                        >
-                                            <div
-                                                className="photoboxes"
-                                                style={{ backgroundImage: `url(${post.img})` }}
-                                            ></div>
-
-                                            <a
-                                                href="#"
-                                                className={classNames(
-                                                    'absolute inset-0 rounded-md',
-                                                    'ring-orange-400 focus:z-10 focus:outline-none focus:ring-2'
-                                                )}
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            </Tab.Panel>
-                        ))}
-                    </Tab.Panels>
+                             <Tab.Panel
+                             key={idx}
+                             className={classNames(
+                               'rounded-xl bg-white p-3',
+                               'ring-white/60 ring-offset-2 ring-offset-orange-400 focus:outline-none focus:ring-2'
+                             )}
+                           >
+                             <div className="flex overflow-x-auto pb-48">
+                               {posts.map((post) => (
+                                 <div
+                                   key={post.id}
+                                   className="flex-none w-1/3 p-3"
+                                 >
+                                   {idx === 0 ? ( // Check if it's the "Photo" category
+                                     <img src={`/api/imageProxy?imageId=${post.id}`} alt={post.title} style={{ width: '100%', height: 'auto' }} />
+                                   ) : (
+                                     <div
+                                       className="photoboxes"
+                                       style={{ backgroundImage: `url(${post.img})` }}
+                                     ></div>
+                                   )}
+                                 </div>
+                               ))}
+                             </div>
+                           </Tab.Panel>
+                         ))}
+                       </Tab.Panels>
                 </Tab.Group>
             </div>
         </div>

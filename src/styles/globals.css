@@ -112,6 +112,18 @@ right:50px;
 
 }
 
+.scrollbar-container {
+  display: flex;
+  align-items: center; /* Adjust as needed */
+}
+
+.scrollbar-gif {
+  /* Adjust width, height, and margins as necessary */
+  width: 50%;
+  height: auto;
+  margin-left: 10px; /* Space between the scrollbar and the GIF */
+}
+
 .down-arrow {
   position: absolute;
   top:120px;
@@ -139,6 +151,14 @@ right:50px;
   border-right: 4px solid;
   border-radius: 4px;
   transform: rotateZ(45deg);
+}
+
+.needmore{
+  background-color: #ed5724;
+  border-radius:25px;
+  color:white;
+  height:200px;
+
 }
 
 @keyframes jumpInfinite {
@@ -199,4 +219,9 @@ right:50px;
 bottom:-50px;
 right:0px;
 }
+}
+
+.galleryimages{
+width:100px;
+height:auto;
 }
