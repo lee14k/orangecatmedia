@@ -118,28 +118,7 @@ export default function ContactForm() {
                 .
               </p>
             </form>
-            <div className="lg:mt-6 lg:w-80 lg:flex-none">
-              <img className="h-12 w-auto" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" alt="" />
-              <figure className="mt-10">
-                <blockquote className="text-lg font-semibold leading-8 text-gray-900">
-                  <p>
-                    “Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias
-                    molestiae. Numquam corrupti in laborum sed rerum et corporis.”
-                  </p>
-                </blockquote>
-                <figcaption className="mt-10 flex gap-x-6">
-                  <img
-                    src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=96&h=96&q=80"
-                    alt=""
-                    className="h-12 w-12 flex-none rounded-full bg-gray-50"
-                  />
-                  <div>
-                    <div className="text-base font-semibold text-gray-900">Brenna Goyette</div>
-                    <div className="text-sm leading-6 text-gray-600">CEO of Workcation</div>
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
+           
           </div>
         </div>
       </div>
