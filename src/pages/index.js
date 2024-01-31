@@ -18,7 +18,7 @@ export default function Home() {
       
    <div>
     
-    <BigHeadline children="Orange Cat Media"/>
+    <BigHeadline />
     
     <div className="my-16">
     <IdentityBox/>

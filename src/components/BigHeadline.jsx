@@ -1,16 +1,15 @@
 import TripleRowBox from "./TripleRowBox";
 import Image from "next/image";
-const BigHeadline = ({ children }) => (
+const BigHeadline = () => (
     <div>
 
-<div >
+
     <div className="flex justify-center items-center">
       <Image
       src="/ocm.png"
       height={600}
       width={600}
       />
-    </div>
     </div>
     <div className="my-24 ml-48  ">
    < TripleRowBox useTripleRowWrapper={false}

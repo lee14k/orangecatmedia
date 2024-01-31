@@ -10,9 +10,6 @@
     font-weight: 800;
     line-height: 1em;
     padding-top:400px;
-    
-
-
 }
 
 .absolute-service-list-wrapper{
@@ -52,13 +49,11 @@
 
 .shadows {
   text-shadow: 2px 2px 4px #000000;
-
 }
 
 .triplerowwrapper{
   background-color: #ed5724;
   height:150px;
-
 }
 
 .triple {
@@ -160,7 +155,43 @@ right:50px;
 
 @media screen and (max-width: 800px) {
 .homewrapper{
-  width:1200px;
+  width:900px;
 }
 
+.triprowmob {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+}
+.triplerowwrapper{
+  height:500px;
+  gap:30px;
+}
+.coollistcontainer{
+  width: 100%;
+  max-width: 1380px;
+  min-height: 50px;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: block;
+  overflow-y: hidden ;
+}
+
+.absolute-service-list{
+  color:#ed5724;
+    text-align: right;
+    letter-spacing: -.03em;
+    font-size: 18vw;
+    font-weight: 800;
+    line-height: 1em;
+    padding-top:500px;
+}
+.mainhead{
+  max-width:400px;
+}
 }
