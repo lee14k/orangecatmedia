@@ -26,7 +26,7 @@ const CoolListEffect = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative' }} className="pt-6 overflow-hidden	" >
+    <div style={{ position: 'relative' }} className="overflow-hidden	" >
       <div 
         className="absolute-service-list" 
         style={{
