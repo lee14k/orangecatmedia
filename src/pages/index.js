@@ -11,6 +11,8 @@ import FAQ from '@/components/FAQ'
 import PortfolioBox from '@/components/PortfolioBox'
 import ImageGallery from '@/components/ImageGallery'
 import ContactForm from '@/components/ContactForm'
+import Footer from "@/components/Footer";
+
 const poppins = Poppins({   weight: '400',
 subsets: ['latin'],})
 
@@ -35,6 +37,7 @@ export default function Home() {
     <ContactForm/>
     </div>
 </div>
+<Footer/>
 </div>
   )
 }

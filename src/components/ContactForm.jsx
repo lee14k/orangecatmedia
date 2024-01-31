@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Link from "next/link";
+
 export default function ContactForm() {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
 
@@ -147,9 +149,9 @@ export default function ContactForm() {
               </div>
               <p className="mt-4 text-sm leading-6 text-gray-500">
                 By submitting this form, I agree to the{' '}
-                <a href="#" className="font-semibold text-orange-600">
+               <Link href="/" className="font-semibold text-orange-600">
                   privacy&nbsp;policy
-                </a>
+                </Link>
                 .
               </p>
             </form>
