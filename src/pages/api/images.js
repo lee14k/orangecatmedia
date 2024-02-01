@@ -25,12 +25,13 @@ export default async function handler(req, res) {
             });
 
             // Process the response to get image information
-            const imagesInfo = response.data.files.map(file => ({
-                id: file.id, 
+            let imagesInfo = response.data.files.map(file => ({
+                id: file.id,
                 title: file.name,
                 mimeType: file.mimeType,
                 thumbnailLink: file.thumbnailLink
             }));
+            imagesInfo = imagesInfo.sort((a, b) => a.title.localeCompare(b.title));
 
             res.status(200).json(imagesInfo);
         } catch (error) {
