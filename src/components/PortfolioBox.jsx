@@ -33,20 +33,20 @@ export default function PortfolioBox() {
         id: 1,
         title: 'Ask Me Anything: 10 answers to your questions about coffee',
         img: '/webs1.png',
-        link:'https://www.wihomewinemakers.com/'
+        link: 'https://www.wihomewinemakers.com/'
       },
       {
         id: 2,
         title: "The worst advice we've ever heard about coffee",
         img: '/webs2.png',
-        link:''
+        link: ''
 
       },
       {
         id: 3,
         title: "The worst advice we've ever heard about coffee",
         img: '/webs3.png',
-        link:'https://www.pinecrestoflakegeneva.com/'
+        link: 'https://www.pinecrestoflakegeneva.com/'
 
       },
     ],
@@ -95,17 +95,17 @@ export default function PortfolioBox() {
                   'ring-white/60 ring-offset-2 focus:outline-none focus:ring-2',
                 )}
               >
-                <div className="flex overflow-x-auto pb-10 gap-12 pl-12">
+                <div className={`flex overflow-x-auto pb-10 ${idx !== 0 ? 'gap-24 px-4' : ''}`} style={{ paddingLeft: idx !== 0 ? '12px' : '0', paddingRight: idx !== 0 ? '12px' : '0' }}>
                   {posts.map((post) => (
-                    <div key={post.id} className="flex-none w-1/5">
+                    <div key={post.id} className={`flex-none ${idx !== 0 ? 'm-2' : ''}`} style={{ width: idx !== 0 ? 'calc(20% - 16px)' : '20%', padding: idx !== 0 ? '20px' : '0' }}>
                       {idx === 0 ? (
                         // Photo category
-                        <img src={`/api/imageProxy?imageId=${post.id}`} alt={post.title} style={{ width: '70%', height: 'auto' }} loading="lazy" />
+                        <img src={`/api/imageProxy?imageId=${post.id}`} alt={post.title} style={{ width: '100%', height: 'auto' }} loading="lazy" />
                       ) : idx === 1 ? (
                         // Video category
                         post.videoUrl ? (
                           <iframe
-                            width="460"
+                            width="100%"
                             height="315"
                             src={post.videoUrl}
                             title="YouTube video player"
@@ -123,14 +123,14 @@ export default function PortfolioBox() {
                         // Web category
                         post.link ? (
                           <Link href={post.link}>
-                              <div
-                                className="photoboxes"
-                                style={{ backgroundImage: `url(${post.img})` }}
-                              ></div>
+                            <div
+                              className="photoboxes flex justify-center items-center"
+                              style={{ backgroundImage: `url(${post.img})` }}
+                            ></div>
                           </Link>
                         ) : (
                           <div
-                            className="photoboxes"
+                            className="photoboxes "
                             style={{ backgroundImage: `url(${post.img})` }}
                           ></div>
                         )
