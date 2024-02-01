@@ -67,7 +67,7 @@ export default function PortfolioBox() {
 
   return (
     <div className="portfolio pt-48">
-      <h1 className="text-6xl big-headline ml-24">Check out our work</h1>
+      <h1 className="text-6xl big-headline">Check out our work</h1>
       <div className="w-full px-2 py-16 sm:px-0">
         <Tab.Group>
           <Tab.List className="flex rounded-xl bg-orange-900/20 p-1 mx-16">
