@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { upload } from '@vercel/blob/client';
+import { upload } from '@vercel/blob';
 
 async function uploadToBlob(imageId) {
     const imageUrl = `https://drive.google.com/uc?id=${imageId}&export=download`;
