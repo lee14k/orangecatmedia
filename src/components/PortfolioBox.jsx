@@ -100,7 +100,8 @@ export default function PortfolioBox() {
                     <div key={post.id} className="flex-none w-1/3 p-3">
                       {idx === 0 ? (
                         // Photo category
-                        <img src={`/api/imageProxy?imageId=${post.id}`} alt={post.title} style={{ width: '100%', height: 'auto' }} loading="lazy" />
+                        <img src={post.blobUrl} alt={post.title} style={{ width: '100%', height: 'auto' }} loading="lazy" />
+
                       ) : idx === 1 ? (
                         // Video category
                         post.videoUrl ? (
