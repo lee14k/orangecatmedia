@@ -59,11 +59,14 @@ export default function PortfolioBox() {
         .then(response => response.json())
         .then(imagesInfo => {
             imagesInfo.forEach(async imageInfo => {
-                const imageUrl = `https://drive.google.com/uc?id=${imageInfo.id}&export=download`;
-                const response = await fetch(imageUrl);
-                const blob = await response.blob();
+                // Fetch the image via the proxy endpoint
+                const proxyResponse = await fetch(`/api/proxy-image?imageId=${imageInfo.id}`);
+                const blob = await proxyResponse.blob();
 
+                // Upload the blob to Vercel's Blob Storage
                 const newBlob = await upload(imageInfo.id, blob, { access: 'public' });
+
+                // Update state with the new blob URL
                 setCategories(prev => ({
                     ...prev,
                     Photo: [...prev.Photo, { ...imageInfo, blobUrl: newBlob.url }]
