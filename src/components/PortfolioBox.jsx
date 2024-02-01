@@ -77,7 +77,7 @@ export default function PortfolioBox() {
                 className={({ selected }) =>
                   classNames(
                     'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
-                    'ring-white/60 ring-offset-2 ring-offset-orange-400 focus:outline-none focus:ring-2',
+                    'ring-white/60 focus:outline-none focus:ring-2',
                     selected ? 'bg-white text-orange-700 shadow' : 'text-orange-100',
                   )
                 }
@@ -92,10 +92,10 @@ export default function PortfolioBox() {
                 key={idx}
                 className={classNames(
                   'rounded-xl bg-white p-3',
-                  'ring-white/60 ring-offset-2 ring-offset-orange-400 focus:outline-none focus:ring-2',
+                  'ring-white/60 ring-offset-2 focus:outline-none focus:ring-2',
                 )}
               >
-                <div className="flex overflow-x-auto pb-10 gap-12 pl-2">
+                <div className="flex overflow-x-auto pb-10 gap-12 pl-12">
                   {posts.map((post) => (
                     <div key={post.id} className="flex-none w-1/5">
                       {idx === 0 ? (
