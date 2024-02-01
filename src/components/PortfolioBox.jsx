@@ -59,7 +59,7 @@ export default function PortfolioBox() {
         .then(response => response.json())
         .then(imagesInfo => {
             imagesInfo.forEach(async imageInfo => {
-                const proxyResponse = await fetch(`/api/proxy-image?imageId=${imageInfo.id}`);
+                const proxyResponse = await fetch(`/api/imageProxy?imageId=${imageInfo.id}`);
                 const blob = await proxyResponse.blob();
 
                 try {
