@@ -59,18 +59,18 @@ export default function PortfolioBox() {
         .then(response => response.json())
         .then(imagesInfo => {
             imagesInfo.forEach(async imageInfo => {
-                // Fetch the image via the proxy endpoint
                 const proxyResponse = await fetch(`/api/proxy-image?imageId=${imageInfo.id}`);
                 const blob = await proxyResponse.blob();
 
-                // Upload the blob to Vercel's Blob Storage
-                const newBlob = await upload(imageInfo.id, blob, { access: 'public' });
-
-                // Update state with the new blob URL
-                setCategories(prev => ({
-                    ...prev,
-                    Photo: [...prev.Photo, { ...imageInfo, blobUrl: newBlob.url }]
-                }));
+                try {
+                    const newBlob = await upload(imageInfo.id, blob, { access: 'public' });
+                    setCategories(prev => ({
+                        ...prev,
+                        Photo: [...prev.Photo, { ...imageInfo, blobUrl: newBlob.url }]
+                    }));
+                } catch (error) {
+                    console.error('Error uploading to blob:', error);
+                }
             });
         })
         .catch(error => console.error('Error fetching images:', error));
