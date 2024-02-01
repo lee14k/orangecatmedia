@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Tab } from '@headlessui/react';
-import { upload } from '@vercel/blob/client'; // Ensure this import is correct
-
 import Link from 'next/link';
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -55,29 +53,18 @@ export default function PortfolioBox() {
   });
 
   useEffect(() => {
+    // Fetch images from your API and update the Photo category
     fetch('/api/images')
-        .then(response => response.json())
-        .then(imagesInfo => {
-            imagesInfo.forEach(async imageInfo => {
-                const proxyResponse = await fetch(`/api/imageProxy?imageId=${imageInfo.id}`);
-                const blob = await proxyResponse.blob();
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories((prevCategories) => ({
+          ...prevCategories,
+          Photo: data, // assuming 'data' is an array of image objects
+        }));
+      })
+      .catch((error) => console.error('Error fetching images:', error));
+  }, []);
 
-                try {
-                  const newBlob = await upload(imageInfo.id, blob, { 
-                    access: 'public',
-                    handleUploadUrl: '/api/get-upload-url'
-                });
-                    setCategories(prev => ({
-                        ...prev,
-                        Photo: [...prev.Photo, { ...imageInfo, blobUrl: newBlob.url }]
-                    }));
-                } catch (error) {
-                    console.error('Error uploading to blob:', error);
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching images:', error));
-}, []);
   return (
     <div className="portfolio pt-48">
       <h1 className="text-6xl big-headline">Check out our work</h1>
@@ -113,8 +100,7 @@ export default function PortfolioBox() {
                     <div key={post.id} className="flex-none w-1/3 p-3">
                       {idx === 0 ? (
                         // Photo category
-                        <img src={post.blobUrl} alt={post.title} style={{ width: '100%', height: 'auto' }} loading="lazy" />
-
+                        <img src={`/api/imageProxy?imageId=${post.id}`} alt={post.title} style={{ width: '100%', height: 'auto' }} loading="lazy" />
                       ) : idx === 1 ? (
                         // Video category
                         post.videoUrl ? (
