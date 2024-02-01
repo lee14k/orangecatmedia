@@ -67,7 +67,7 @@ export default function PortfolioBox() {
 
   return (
     <div className="portfolio pt-48">
-      <h1 className="text-6xl big-headline">Check out our work</h1>
+      <h1 className="text-6xl big-headline ml-20">Check out our work</h1>
       <div className="w-full px-2 py-16 sm:px-0">
         <Tab.Group>
           <Tab.List className="flex rounded-xl bg-orange-900/20 p-1 mx-16">
@@ -95,9 +95,9 @@ export default function PortfolioBox() {
                   'ring-white/60 ring-offset-2 ring-offset-orange-400 focus:outline-none focus:ring-2',
                 )}
               >
-                <div className="flex overflow-x-auto pb-10 gap-12">
+                <div className="flex overflow-x-auto pb-10 gap-12 pl-2">
                   {posts.map((post) => (
-                    <div key={post.id} className="flex-none w-1/3 p-3">
+                    <div key={post.id} className="flex-none w-1/5">
                       {idx === 0 ? (
                         // Photo category
                         <img src={`/api/imageProxy?imageId=${post.id}`} alt={post.title} style={{ width: '70%', height: 'auto' }} loading="lazy" />
