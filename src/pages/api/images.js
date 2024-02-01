@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
             // List files from the specified Google Drive folder
             const response = await drive.files.list({
-                pageSize: 20,
+                pageSize: 120,
                 fields: 'nextPageToken, files(id, name, mimeType, webContentLink, thumbnailLink)',
                 q: `'${folderId}' in parents and (mimeType='image/jpeg' or mimeType='image/png')`,
             });
