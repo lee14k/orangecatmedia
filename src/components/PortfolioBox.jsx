@@ -63,7 +63,10 @@ export default function PortfolioBox() {
                 const blob = await proxyResponse.blob();
 
                 try {
-                    const newBlob = await upload(imageInfo.id, blob, { access: 'public' });
+                  const newBlob = await upload(imageInfo.id, blob, { 
+                    access: 'public',
+                    handleUploadUrl: '/api/get-upload-url'
+                });
                     setCategories(prev => ({
                         ...prev,
                         Photo: [...prev.Photo, { ...imageInfo, blobUrl: newBlob.url }]
