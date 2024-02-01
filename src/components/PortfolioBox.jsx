@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Tab } from '@headlessui/react';
+import { upload } from '@vercel/blob/client';
+
 import Link from 'next/link';
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -53,18 +55,23 @@ export default function PortfolioBox() {
   });
 
   useEffect(() => {
-    // Fetch images from your API and update the Photo category
     fetch('/api/images')
-      .then((response) => response.json())
-      .then((data) => {
-        setCategories((prevCategories) => ({
-          ...prevCategories,
-          Photo: data, // assuming 'data' is an array of image objects
-        }));
-      })
-      .catch((error) => console.error('Error fetching images:', error));
-  }, []);
+        .then(response => response.json())
+        .then(imagesInfo => {
+            imagesInfo.forEach(async imageInfo => {
+                const imageUrl = `https://drive.google.com/uc?id=${imageInfo.id}&export=download`;
+                const response = await fetch(imageUrl);
+                const blob = await response.blob();
 
+                const newBlob = await upload(imageInfo.id, blob, { access: 'public' });
+                setCategories(prev => ({
+                    ...prev,
+                    Photo: [...prev.Photo, { ...imageInfo, blobUrl: newBlob.url }]
+                }));
+            });
+        })
+        .catch(error => console.error('Error fetching images:', error));
+}, []);
   return (
     <div className="portfolio pt-48">
       <h1 className="text-6xl big-headline">Check out our work</h1>

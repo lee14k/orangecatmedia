@@ -1,18 +1,5 @@
 import { google } from 'googleapis';
-import { upload } from '@vercel/blob';
 
-async function uploadToBlob(imageId) {
-    const imageUrl = `https://drive.google.com/uc?id=${imageId}&export=download`;
-    const response = await fetch(imageUrl);
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch image from Google Drive');
-    }
-    
-    const blob = await response.blob(); // Convert to blob
-    const newBlob = await upload(imageId, blob, { access: 'public' });
-    return newBlob.url;
-  }
 export default async function handler(req, res) {
     if (req.method === 'GET') {
         try {
@@ -37,19 +24,16 @@ export default async function handler(req, res) {
                 q: `'${folderId}' in parents and (mimeType='image/jpeg' or mimeType='image/png')`,
             });
 
-            // Process the response to get image URLs
-            const images = response.data.files.map(file => {
-                return { id: file.id, title: file.name, url: file.webViewLink };
-            });
+            // Process the response to get image information
+            const imagesInfo = response.data.files.map(file => ({
+                id: file.id, 
+                title: file.name,
+                mimeType: file.mimeType,
+                thumbnailLink: file.thumbnailLink
+            }));
 
-            const imagesWithBlobUrls = await Promise.all(
-                images.map(async file => {
-                  const blobUrl = await uploadToBlob(file.id);
-                  return { ...file, blobUrl };
-                })
-              );
-          
-              res.status(200).json(imagesWithBlobUrls);        } catch (error) {
+            res.status(200).json(imagesInfo);
+        } catch (error) {
             console.error('The API returned an error: ' + error);
             res.status(500).send(error.toString());
         }
