@@ -70,7 +70,7 @@ export default function Privacy() {
       <h2 className="mb-2">
         Third-Party Websites
         <p>
-          The Services may contain h2nks to third-party websites. We are not
+          The Services may contain links to third-party websites. We are not
           responsible for the privacy practices or the content of those
           third-party websites.{" "}
         </p>
