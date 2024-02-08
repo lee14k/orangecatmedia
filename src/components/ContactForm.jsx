@@ -149,7 +149,7 @@ export default function ContactForm() {
               </div>
               <p className="mt-4 text-sm leading-6 text-gray-500">
                 By submitting this form, I agree to the{' '}
-               <Link href="/" className="font-semibold text-orange-600">
+               <Link href="/privacy" className="font-semibold text-orange-600">
                   privacy&nbsp;policy
                 </Link>
                 .
