@@ -97,7 +97,7 @@ export default function PortfolioBox() {
               >
                 <div className={`flex overflow-x-auto pb-10 gap-12 ml-14 ${idx !== 0 ? 'gap-24 px-4' : ''}`} style={{ paddingLeft: idx !== 0 ? '12px' : '0', paddingRight: idx !== 0 ? '12px' : '0' }}>
                   {posts.map((post) => (
-                    <div key={post.id} className={`flex-none ${idx !== 0 ? 'm-2' : ''}`} style={{ width: idx !== 0 ? 'calc(20% - 16px)' : '20%', padding: idx !== 0 ? '20px' : '0' }}>
+                    <div key={post.id} className={`flex-none ${idx !== 0 ? 'm-2' : ''}`} style={{ width: idx !== 0 ? 'calc(40% - 16px)' : '20%', padding: idx !== 0 ? '20px' : '0' }}>
                       {idx === 0 ? (
                         // Photo category
                         <img src={`/api/imageProxy?imageId=${post.id}`} alt={post.title} style={{ width: '100%', height: 'auto' }} loading="lazy" />
