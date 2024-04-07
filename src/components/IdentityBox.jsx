@@ -1,7 +1,7 @@
 import Image from "next/image";
 const IdentityBox = () => {
     return (
-        <div className="identity-box mx-16 flex flex-col justify-center items-center">
+        <div className="identity-box mx-16 flex flex-col justify-center items-center ">
             <div >
                 <div className="iconboxone">
                 <Image

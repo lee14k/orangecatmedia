@@ -2,7 +2,7 @@ import TripleRowBox from "./TripleRowBox";
 import Image from "next/image";
 const BigHeadline = () => (
   <div>
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center ">
       <Image src="/back.png" height={600} width={600} />
     </div>
     <div className="my-24 ml-48  ">
@@ -15,7 +15,7 @@ const BigHeadline = () => (
         spanOne="years of combined experience"
         spanTwo="views on our work monthly"
         spanThree="assets created"
-        headColor="#ed5724" // Custom color for heads
+        headColor="#000000" // Custom color for heads
         spanColor="black" // Custom color for spans
       />
     </div>
