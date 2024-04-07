@@ -12,6 +12,7 @@ import PortfolioBox from '@/components/PortfolioBox'
 import ImageGallery from '@/components/ImageGallery'
 import ContactForm from '@/components/ContactForm'
 import Footer from "@/components/Footer";
+import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 
 const poppins = Poppins({   weight: '400',
 subsets: ['latin'],})
@@ -21,13 +22,16 @@ export default function Home() {
     <div className="homewrapper">
       
    <div>
-    
+    <FadeIn>
     <BigHeadline />
-    
+    </FadeIn>
     <div className="my-16">
     <IdentityBox/>
     </div>
+    <FadeInStagger>
     <CustomerBox/>
+    </FadeInStagger>
+
     <div>
     <PortfolioBox/>
     </div>
