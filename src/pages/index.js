@@ -13,6 +13,8 @@ import ImageGallery from "@/components/ImageGallery";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
+import { StylizedImage } from "@/components/StylizedImage";
+import imageLaptop from "/Users/kailee/orangecatmedia/public/laptop.jpg";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -40,6 +42,12 @@ export default function Home() {
         </div>
       </div>
       <Footer />
+     { /*<StylizedImage
+        src={imageLaptop}
+        sizes="(min-width: 1024px) 41rem, 31rem"
+        className="justify-center lg:justify-end"
+      />*/}
     </div>
   );
 }
+
