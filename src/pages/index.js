@@ -14,7 +14,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { StylizedImage } from "@/components/StylizedImage";
-import imageLaptop from "/Users/kailee/orangecatmedia/public/laptop.jpg";
+import imageLaptop from "/laptop.jpg";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
