@@ -1,40 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Orange Cat Media
 
-## Getting Started
+Site for Orange Cat Media, an independent software studio. It shares its design with Kailee's portfolio site: same palette, Fredoka + DM Sans, stickers, and marquees, with orange in the lead.
 
-First, run the development server:
+Next.js (pages router) + TypeScript + CSS Modules. Every page is pre-rendered to static HTML; the only server routes are the contact form and a health check. Deploys to Railway as a standalone Docker image.
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Before pushing:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run build      # also type-checks
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Copy `.env.example` to `.env.local` to try the contact form locally.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Content edits
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Typed modules in `src/content/`:
 
-## Learn More
+- `studio.ts`: name, **legal name**, location, email, hero roles, stats
+- `principles.ts`: "How we work"
+- `services.ts`: "What we build"
+- `work.ts`: portfolio rows (`kind: "client" | "studio"`)
+- `faq.ts`: FAQ
 
-To learn more about Next.js, take a look at the following resources:
+Pages with their own copy:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/pages/privacy.tsx`: privacy policy (bump `LAST_UPDATED` when it changes)
+- `src/pages/support.tsx`: support page for app users
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Stickers live in `src/assets/stickers/`. The share image is `public/og.png`.
 
-## Deploy on Vercel
+## Contact form
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`POST /api/contact` sends submissions to `CONTACT_TO_EMAIL` via [Resend](https://resend.com), with reply-to set to the visitor. It has a honeypot field and a 5-messages-per-hour-per-IP limit, and returns 503 until all three `RESEND_*`/`CONTACT_*` variables are set. This is the same setup the portfolio site uses.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`onboarding@resend.dev` only delivers to the email on your Resend account. To send from your own address, verify the studio's domain in Resend and change `CONTACT_FROM_EMAIL`.
+
+## Railway deploy
+
+1. Create a Railway project from this repo. Railway picks up `railway.toml` and builds the root `Dockerfile`.
+2. Set variables:
+   - `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
+   - `NEXT_PUBLIC_SITE_URL`: the public URL, e.g. `https://orangecatmedia.com`. It's baked in at build time for canonical and Open Graph tags, so redeploy after changing it.
+3. Deploy. The health check is `/api/health`.
+4. Add your custom domain under the service's **Settings → Networking**, then point DNS at it.
+
+Run the production image locally:
+
+```bash
+docker build -t orangecatmedia .
+docker run --rm -p 3000:3000 --env-file .env.local orangecatmedia
+```
+
+## Apple Developer Program checklist
+
+- `studio.legalName` in `src/content/studio.ts` matches the legal entity name on your D-U-N-S record exactly.
+- The site is live on the organization's own domain. Apple checks for a public website associated with the organization.
+- App Store Connect asks for a **Privacy Policy URL** and a **Support URL** for every app. Use `/privacy` and `/support`.
+- Swap `studio.email` to an address on the studio's domain once it exists. It's shown on the site, the privacy policy, and the support page.
+
+## Stack
+
+- Next.js 16 (pages router, `output: "standalone"`), React 19, TypeScript
+- CSS Modules + global tokens in `src/styles/tokens.css`
+- Fonts are self-hosted from `@fontsource-variable`, so there are no third-party font requests
+- Contact email via the Resend HTTP API

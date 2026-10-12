@@ -1,0 +1,138 @@
+.hero {
+  padding: clamp(2.5rem, 8vw, 7rem) 0 clamp(3rem, 8vw, var(--space-xl));
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.75fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.kicker {
+  margin: 0 0 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.intro {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--ink-muted);
+}
+
+.roles {
+  display: flex;
+  flex-direction: column;
+  margin: 0.4rem 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 9.5vw, 4.5rem);
+  line-height: 0.95;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.orange {
+  color: var(--orange);
+}
+
+.teal {
+  color: var(--teal);
+}
+
+.pink {
+  color: var(--pink);
+}
+
+.specialty {
+  max-width: 34rem;
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.02rem, 3.2vw, 1.15rem);
+  color: var(--ink);
+}
+
+.tagline {
+  max-width: 34rem;
+  margin: 0 0 2rem;
+  color: var(--ink-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.25rem;
+  margin-bottom: 2.75rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.stats dt {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 4vw, 1.85rem);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.stats dd {
+  margin: 0.3rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.visual {
+  display: grid;
+  justify-items: center;
+}
+
+.sticker {
+  width: min(100%, 340px);
+  height: auto;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem 1rem;
+  }
+
+  .visual {
+    order: -1;
+    justify-items: start;
+  }
+
+  .sticker {
+    width: min(55vw, 240px);
+  }
+
+  .actions {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+
+  .stats dd {
+    font-size: 0.75rem;
+  }
+}

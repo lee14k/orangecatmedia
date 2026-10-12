@@ -1,0 +1,112 @@
+.section {
+  border-top: 1px solid var(--line);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 0.5rem;
+}
+
+.sticker {
+  width: min(140px, 30vw);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 1.5rem 2rem;
+  padding: 1.85rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.meta {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  padding-top: 0.15rem;
+}
+
+.number {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--orange);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.kind {
+  display: inline-flex;
+  width: fit-content;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+.item h3 {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.item p {
+  margin: 0;
+  color: var(--ink-muted);
+  max-width: 44rem;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.65rem;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 720px) {
+  .header {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .sticker {
+    width: 100px;
+  }
+
+  .item {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    padding: 1.4rem 0;
+  }
+
+  .item h3 {
+    font-size: 1.15rem;
+    overflow-wrap: anywhere;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem 0.85rem;
+  }
+}

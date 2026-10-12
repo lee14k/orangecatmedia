@@ -1,0 +1,124 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: end;
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--line);
+}
+
+.header .lede {
+  margin-bottom: 0;
+}
+
+.sticker {
+  width: min(140px, 28vw);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.updated {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
+
+.body {
+  max-width: 44rem;
+}
+
+.body h2 {
+  margin: 2.5rem 0 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.body h2:first-child {
+  margin-top: 0;
+}
+
+.body h3 {
+  margin: 1.5rem 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.body p,
+.body li {
+  color: var(--ink-muted);
+}
+
+.body p {
+  margin: 0 0 1rem;
+}
+
+.body ul {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+}
+
+.body li {
+  margin-bottom: 0.35rem;
+}
+
+.body li::marker {
+  color: var(--orange);
+}
+
+.body a {
+  color: var(--orange-deep);
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.body a:hover {
+  text-decoration: underline;
+}
+
+.body strong {
+  color: var(--ink);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 2.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.card {
+  padding: 0.5rem 0 1.25rem;
+}
+
+.card h2 {
+  margin: 0 0 0.45rem;
+}
+
+.card p {
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .header {
+    flex-direction: column-reverse;
+    align-items: start;
+  }
+
+  .sticker {
+    width: 96px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card + .card {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+}

@@ -1,3 +1,0 @@
-const ListBox = () => {
-    <div></div>
-}

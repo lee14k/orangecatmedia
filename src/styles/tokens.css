@@ -1,0 +1,287 @@
+:root {
+  --bg: #f8faf4;
+  --bg-soft: #f0f6e0;
+  --ink: #1a1f16;
+  --ink-muted: #5a6454;
+  --pink: #ff4fa3;
+  --pink-soft: #ffd0e6;
+  --orange: #ff7a1a;
+  /* Deeper orange for white text and small orange text (WCAG AA on white and --bg). */
+  --orange-deep: #cc4a0b;
+  --orange-soft: #ffe1cc;
+  --teal: #2ec4b6;
+  --lime: #c8f07a;
+  --lime-deep: #9fd63a;
+  --white: #ffffff;
+  --line: rgba(26, 31, 22, 0.1);
+  --line-strong: rgba(26, 31, 22, 0.18);
+
+  --font-display: "Fredoka Variable", "Fredoka", "Segoe UI", sans-serif;
+  --font-body: "DM Sans Variable", "DM Sans", "Segoe UI", sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7.5rem;
+  --max: 1080px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 70% 45% at 10% -5%, rgba(200, 240, 122, 0.35), transparent 55%),
+    radial-gradient(ellipse 50% 35% at 95% 5%, rgba(255, 122, 26, 0.1), transparent 50%),
+    var(--bg);
+  line-height: 1.65;
+  font-size: 1.05rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--orange-deep);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wrap {
+  width: min(100% - 2.5rem, var(--max));
+  margin-inline: auto;
+}
+
+.section {
+  padding: var(--space-xl) 0;
+}
+
+.section__eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 0.75rem;
+  font-weight: 500;
+}
+
+.section__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.85rem, 7vw, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.85rem;
+  max-width: 18ch;
+}
+
+.section__lede {
+  max-width: 38rem;
+  color: var(--ink-muted);
+  margin: 0 0 var(--space-lg);
+  font-size: clamp(1rem, 2.8vw, 1.08rem);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--ink);
+  background: var(--white);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+  touch-action: manipulation;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn--orange {
+  background: var(--orange-deep);
+  border-color: var(--orange-deep);
+  color: var(--white);
+}
+
+.btn--orange:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  padding-inline: 0.4rem;
+}
+
+.btn--ghost:hover {
+  background: transparent;
+  color: var(--orange-deep);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0;
+  border: none;
+  background: transparent;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
+}
+
+.badge + .badge::before {
+  content: "·";
+  margin-right: 0.35rem;
+  margin-left: 0.1rem;
+  opacity: 0.5;
+}
+
+.text-link {
+  color: var(--orange-deep);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.75s ease both;
+}
+
+.fade-up-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.fade-up-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.fade-up-delay-3 {
+  animation-delay: 0.24s;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --space-lg: 2.5rem;
+    --space-xl: 4.25rem;
+  }
+
+  body {
+    font-size: 1rem;
+  }
+
+  .wrap {
+    width: min(100% - 1.5rem, var(--max));
+  }
+
+  .section__title {
+    max-width: none;
+  }
+
+  .section__lede {
+    margin-bottom: var(--space-md);
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .btn--ghost {
+    width: auto;
+    max-width: none;
+    min-height: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
