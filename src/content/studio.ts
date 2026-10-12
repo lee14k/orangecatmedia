@@ -7,9 +7,10 @@ export const studio = {
   name: "Orange Cat Media",
   // Must match the legal entity name on your D-U-N-S record for Apple Developer enrollment.
   legalName: "Orange Cat Media Company",
+  siteUrl: "https://orangecatmedia.dev",
   location: "Stevens Point, WI",
   origin: "Michigan's Upper Peninsula",
-  email: "kailee.hamre@gmail.com",
+  email: "hello@orangecatmedia.dev",
   github: "https://github.com/lee14k",
   founder: "Kailee Hamre",
   description:

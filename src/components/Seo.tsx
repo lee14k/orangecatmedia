@@ -1,7 +1,8 @@
 import Head from "next/head";
 import { studio } from "@/content/studio";
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
+// NEXT_PUBLIC_SITE_URL overrides the domain, e.g. for a staging deploy.
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || studio.siteUrl).replace(/\/$/, "");
 
 type SeoProps = {
   title?: string;

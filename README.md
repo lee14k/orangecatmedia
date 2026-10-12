@@ -41,18 +41,41 @@ Stickers live in `src/assets/stickers/`. The share image is `public/og.png`.
 
 `POST /api/contact` sends submissions to `CONTACT_TO_EMAIL` via [Resend](https://resend.com), with reply-to set to the visitor. It has a honeypot field and a 5-messages-per-hour-per-IP limit, and returns 503 until all three `RESEND_*`/`CONTACT_*` variables are set. This is the same setup the portfolio site uses.
 
-`onboarding@resend.dev` only delivers to the email on your Resend account. To send from your own address, verify the studio's domain in Resend and change `CONTACT_FROM_EMAIL`.
+`onboarding@resend.dev` only delivers to the email on your Resend account. Once `orangecatmedia.dev` is verified in Resend (see [Email](#email)), send from an address on the domain, e.g. `Orange Cat Media <website@orangecatmedia.dev>`.
 
 ## Railway deploy
 
 1. Create a Railway project from this repo. Railway picks up `railway.toml` and builds the root `Dockerfile`.
 2. Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL`.
-3. Deploy. The health check is `/api/health`. The site runs on the Railway-provided URL until a custom domain is added.
+3. Deploy. The health check is `/api/health`.
+4. Attach `orangecatmedia.dev` to the service under **Settings → Networking**. The domain is registered through Railway, so Railway creates the web records itself.
 
-Once the studio's domain is bought:
+Canonical and Open Graph tags use `studio.siteUrl` (`https://orangecatmedia.dev`). Set `NEXT_PUBLIC_SITE_URL` only to override it, e.g. on a staging service; it's read at build time.
 
-1. Add it under the service's **Settings → Networking** and create the DNS records Railway shows you.
-2. Set `NEXT_PUBLIC_SITE_URL` to the full URL (`https://` plus the domain) and redeploy. It's baked in at build time for canonical and Open Graph tags; until it's set, those tags are left out.
+## Email
+
+Mail for `orangecatmedia.dev` is hosted on Google Workspace. The contact form sends through Resend from a separate `send.` subdomain, so the two don't conflict. All records go in the domain's DNS table in Railway (**Workspace → Domains → orangecatmedia.dev**).
+
+Don't turn on Railway's own email forwarding for the domain: it's reported to block third-party MX records while any forwarding address exists.
+
+### Google Workspace (receive and send as `hello@`)
+
+| Type | Name | Value | Notes |
+| --- | --- | --- | --- |
+| TXT | `@` | `google-site-verification=…` | Copy from the Workspace setup wizard |
+| MX | `@` | `smtp.google.com` (priority `1`) | Google's single-record MX |
+| TXT | `@` | `v=spf1 include:_spf.google.com ~all` | Keep exactly one SPF record at `@` |
+| TXT | `google._domainkey` | `v=DKIM1; k=rsa; p=…` | Generate in Admin console → Apps → Google Workspace → Gmail → Authenticate email, then click **Start authentication** |
+| TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:hello@orangecatmedia.dev` | Monitor first; tighten to `p=quarantine` once reports look clean |
+
+One paid seat is enough: make the user account `kailee@orangecatmedia.dev` and add `hello@orangecatmedia.dev` as a free alias.
+
+### Resend (contact form)
+
+Add `orangecatmedia.dev` under Resend → **Domains** and copy the records it shows: an MX and an SPF TXT on the `send` subdomain, and a DKIM TXT at `resend._domainkey`. Once Resend shows the domain as verified, set on Railway:
+
+- `CONTACT_TO_EMAIL=hello@orangecatmedia.dev`
+- `CONTACT_FROM_EMAIL=Orange Cat Media <website@orangecatmedia.dev>`
 
 Run the production image locally:
 
@@ -64,9 +87,9 @@ docker run --rm -p 3000:3000 --env-file .env.local orangecatmedia
 ## Apple Developer Program checklist
 
 - `studio.legalName` in `src/content/studio.ts` matches the legal entity name on your D-U-N-S record exactly.
-- The site is live on the organization's own domain. Apple checks for a public website associated with the organization.
-- App Store Connect asks for a **Privacy Policy URL** and a **Support URL** for every app. Use `/privacy` and `/support`.
-- Swap `studio.email` to an address on the studio's domain once it exists. It's shown on the site, the privacy policy, and the support page.
+- The site is live at `https://orangecatmedia.dev`. Apple checks for a public website associated with the organization.
+- `hello@orangecatmedia.dev` receives mail before the site goes live. It's shown on the site, the privacy policy, and the support page.
+- App Store Connect asks for a **Privacy Policy URL** and a **Support URL** for every app: `https://orangecatmedia.dev/privacy` and `https://orangecatmedia.dev/support`.
 
 ## Stack
 
