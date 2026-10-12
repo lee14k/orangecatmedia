@@ -46,11 +46,13 @@ Stickers live in `src/assets/stickers/`. The share image is `public/og.png`.
 ## Railway deploy
 
 1. Create a Railway project from this repo. Railway picks up `railway.toml` and builds the root `Dockerfile`.
-2. Set variables:
-   - `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
-   - `NEXT_PUBLIC_SITE_URL`: the public URL, e.g. `https://orangecatmedia.com`. It's baked in at build time for canonical and Open Graph tags, so redeploy after changing it.
-3. Deploy. The health check is `/api/health`.
-4. Add your custom domain under the service's **Settings → Networking**, then point DNS at it.
+2. Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL`.
+3. Deploy. The health check is `/api/health`. The site runs on the Railway-provided URL until a custom domain is added.
+
+Once the studio's domain is bought:
+
+1. Add it under the service's **Settings → Networking** and create the DNS records Railway shows you.
+2. Set `NEXT_PUBLIC_SITE_URL` to the full URL (`https://` plus the domain) and redeploy. It's baked in at build time for canonical and Open Graph tags; until it's set, those tags are left out.
 
 Run the production image locally:
 
