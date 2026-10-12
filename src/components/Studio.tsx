@@ -5,50 +5,45 @@ import styles from "./Studio.module.css";
 
 export function Studio() {
   return (
-    <section className={`section ${styles.section}`} id="studio">
+    <section className="section section-paper" id="studio">
       <div className={`wrap ${styles.grid}`}>
-        <div>
-          <p className="section__eyebrow">The studio</p>
-          <h2 className="section__title">Who you’ll work with.</h2>
-          <div className={styles.copy}>
-            <p>
-              {studio.name} is led by founder and engineer {studio.founder}. Kailee’s work spans
-              multi-tenant insurance portals, enterprise scheduling platforms, finance-system
-              integrations, and a consumer React Native app taken all the way through App Store
-              release.
-            </p>
-            <p>
-              Before software, Kailee worked in medical laboratory science — which left a lasting
-              habit of measuring twice and explaining the why. Kailee is also working toward an
-              M.S. in Computer Science at Georgia Tech.
-            </p>
-          </div>
+        <div className={styles.portrait} aria-hidden="true">
+          <div className={styles.portraitBg} />
+          <Image className={styles.kailee} src={stickers.kaileeThumbs} alt="" sizes="280px" />
+          <Image className={styles.up} src={stickers.upperPeninsula} alt="" sizes="130px" />
+        </div>
+        <div className={styles.copy}>
+          <h2>Who you’ll work with</h2>
+          <p>
+            <strong>
+              {studio.name} is led by founder and engineer {studio.founder}.
+            </strong>{" "}
+            Kailee’s work spans multi-tenant insurance portals, enterprise scheduling platforms,
+            finance-system integrations, and a consumer React Native app taken all the way through
+            App Store release.
+          </p>
+          <p>
+            Before software, Kailee worked in medical laboratory science, which left a lasting habit
+            of measuring twice and explaining the why. Kailee is also working toward an M.S. in
+            Computer Science at Georgia Tech.
+          </p>
           <dl className={styles.facts}>
-            <div>
-              <dt>Founder</dt>
-              <dd>{studio.founder}</dd>
-            </div>
-            <div>
+            <div className={styles.fact}>
               <dt>Based in</dt>
               <dd>{studio.location}</dd>
             </div>
-            <div>
+            <div className={styles.fact}>
               <dt>Started in</dt>
               <dd>{studio.origin}</dd>
             </div>
+            <div className={styles.fact}>
+              <dt>Studying</dt>
+              <dd>M.S. CS, Georgia Tech</dd>
+            </div>
           </dl>
-          <a className="btn btn--ghost" href={studio.github} target="_blank" rel="noreferrer">
-            Kailee on GitHub ↗
+          <a className="work-link" href={studio.github} target="_blank" rel="noreferrer">
+            Kailee on GitHub <span aria-hidden="true">↗</span>
           </a>
-        </div>
-        <div className={styles.visual}>
-          <Image
-            className={styles.portrait}
-            src={stickers.kaileeThumbs}
-            alt={`Illustrated sticker of ${studio.founder} giving a thumbs up`}
-            sizes="(max-width: 860px) 160px, 260px"
-          />
-          <Image className={styles.map} src={stickers.upperPeninsula} alt="" sizes="160px" />
         </div>
       </div>
     </section>

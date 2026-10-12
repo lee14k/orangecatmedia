@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   if (!msg) {
     return res.status(400).json({ detail: "Name, a valid email, and a message are required." });
   }
-  if (msg.company) {
+  if (msg.website) {
     return res.status(200).json({ status: "sent" });
   }
 

@@ -20,15 +20,15 @@ export default function Privacy() {
       <section className="section">
         <div className="wrap">
           <div className={styles.header}>
-            <div>
-              <p className="section__eyebrow">Legal</p>
-              <h1 className="section__title">Privacy Policy</h1>
+            <div className={styles.headCopy}>
+              <span className="pill">Legal</span>
+              <h1>Privacy Policy</h1>
               <p className={styles.updated}>Last updated: {LAST_UPDATED}</p>
             </div>
             <Image className={styles.sticker} src={stickers.kitty} alt="" sizes="140px" />
           </div>
 
-          <div className={styles.body}>
+          <div className={`${styles.sheet} ${styles.body}`}>
             <h2>Who we are</h2>
             <p>
               {studio.legalName} (“{studio.name},” “we,” “us”) is an independent software studio
@@ -44,9 +44,10 @@ export default function Privacy() {
             <h2>Information we collect</h2>
             <ul>
               <li>
-                <strong>Information you give us.</strong> Your name, email address, and message when
-                you use our contact form or email us, and anything you choose to include in a
-                support request.
+                <strong>Information you give us.</strong> Your name and email address, and the
+                project details you share in our project brief (such as your company, role,
+                budget, and timeline), when you send us a brief or email us, plus anything you
+                choose to include in a support request.
               </li>
               <li>
                 <strong>Usage data.</strong> Our hosting provider automatically records standard
@@ -54,8 +55,10 @@ export default function Privacy() {
                 and when you request them.
               </li>
               <li>
-                <strong>Cookies.</strong> This website does not use advertising or analytics
-                cookies.
+                <strong>Cookies and local storage.</strong> This website does not use advertising
+                or analytics cookies. The project brief saves an unsent draft in your browser’s
+                local storage so you don’t lose your progress. It stays on your device and is
+                cleared when you send the brief.
               </li>
             </ul>
 
@@ -92,8 +95,8 @@ export default function Privacy() {
 
             <h2>How long we keep it</h2>
             <p>
-              We keep contact messages and support requests for as long as we need them to respond
-              and to maintain ordinary business records.
+              We keep project briefs, messages, and support requests for as long as we need them
+              to respond and to maintain ordinary business records.
             </p>
 
             <h2>Your choices</h2>

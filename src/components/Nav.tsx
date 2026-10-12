@@ -1,42 +1,38 @@
+import Image from "next/image";
 import Link from "next/link";
+import { stickers } from "@/assets/stickers";
 import { studio } from "@/content/studio";
 import styles from "./Nav.module.css";
 
 const links = [
-  { href: "/#services", label: "Services" },
+  { href: "/#why", label: "Why us" },
   { href: "/#work", label: "Work" },
+  { href: "/#process", label: "Process" },
   { href: "/#studio", label: "Studio" },
-  { href: "/support", label: "Support" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export function Nav() {
   return (
     <header className={styles.nav}>
       <div className={`wrap ${styles.inner}`}>
-        <div className={styles.side}>
-          <Link href="/#services">Services</Link>
-          <Link href="/#work">Work</Link>
-        </div>
-        <Link className={styles.brand} href="/">
-          {studio.name.toUpperCase()}
+        <Link className={styles.brand} href="/" aria-label={`${studio.name} home`}>
+          <Image src={stickers.ocmBadge} alt={studio.name} sizes="74px" loading="eager" />
         </Link>
-        <div className={styles.sideRight}>
-          <Link className={styles.desktopOnly} href="/support">
-            Support
-          </Link>
-          <Link className={styles.cta} href="/#contact">
-            Start a project →
-          </Link>
-        </div>
+        <nav className={styles.links} aria-label="Primary">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <Link className={`btn btn-orange btn-sm ${styles.cta}`} href="/#start">
+          Start a project{" "}
+          <span className="arrow" aria-hidden="true">
+            →
+          </span>
+        </Link>
       </div>
-      <nav className={`wrap ${styles.mobile}`} aria-label="Primary">
-        {links.map((link) => (
-          <Link key={link.href} href={link.href}>
-            {link.label}
-          </Link>
-        ))}
-      </nav>
     </header>
   );
 }

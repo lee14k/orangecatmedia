@@ -1,6 +1,6 @@
 # Orange Cat Media
 
-Site for Orange Cat Media, an independent software studio. It shares its design with Kailee's portfolio site: same palette, Fredoka + DM Sans, stickers, and marquees, with orange in the lead.
+Site for Orange Cat Media, an independent software studio. The design is a sheet of sticker-cut cards on warm cream: thick ink outlines, hard offset shadows, halftone dots, and the studio's cartoon stickers, set in Fredoka + DM Sans.
 
 Next.js (pages router) + TypeScript + CSS Modules. Every page is pre-rendered to static HTML; the only server routes are the contact form and a health check. Deploys to Railway as a standalone Docker image.
 
@@ -24,11 +24,15 @@ Copy `.env.example` to `.env.local` to try the contact form locally.
 
 Typed modules in `src/content/`:
 
-- `studio.ts`: name, **legal name**, location, email, hero roles, stats
-- `principles.ts`: "How we work"
+- `studio.ts`: name, **legal name**, domain, location, email, proof stats, marquee words
+- `why.ts`: "Why clients pick Orange Cat" cards
+- `work.ts`: featured project, client cards, and the studio-apps card
 - `services.ts`: "What we build"
-- `work.ts`: portfolio rows (`kind: "client" | "studio"`)
+- `process.ts`: "How a project runs"
+- `brief.ts`: options for the project brief form (project types, budgets, timelines, fit checklist)
 - `faq.ts`: FAQ
+
+The hero, studio bio, and section intros are written inline in their components under `src/components/`. Shared design tokens and primitives (buttons, tags, pills, section headings) live in `src/styles/tokens.css`.
 
 Pages with their own copy:
 
@@ -39,7 +43,9 @@ Stickers live in `src/assets/stickers/`. The share image is `public/og.png`.
 
 ## Contact form
 
-`POST /api/contact` sends submissions to `CONTACT_TO_EMAIL` via [Resend](https://resend.com), with reply-to set to the visitor. It has a honeypot field and a 5-messages-per-hour-per-IP limit, and returns 503 until all three `RESEND_*`/`CONTACT_*` variables are set. This is the same setup the portfolio site uses.
+The "Tell us about your project" section is a four-step brief (project, details, budget, you). It saves a draft in the visitor's browser as they go, and the last step posts everything to `POST /api/contact`.
+
+`/api/contact` emails the brief to `CONTACT_TO_EMAIL` via [Resend](https://resend.com), with reply-to set to the visitor. It has a honeypot field (`website`) and a 5-messages-per-hour-per-IP limit, and returns 503 until all three `RESEND_*`/`CONTACT_*` variables are set.
 
 `onboarding@resend.dev` only delivers to the email on your Resend account. Once `orangecatmedia.dev` is verified in Resend (see [Email](#email)), send from an address on the domain, e.g. `Orange Cat Media <website@orangecatmedia.dev>`.
 

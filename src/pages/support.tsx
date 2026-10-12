@@ -19,10 +19,10 @@ export default function Support() {
       <section className="section">
         <div className="wrap">
           <div className={styles.header}>
-            <div>
-              <p className="section__eyebrow">Support</p>
-              <h1 className="section__title">How can we help?</h1>
-              <p className={`section__lede ${styles.lede}`}>
+            <div className={styles.headCopy}>
+              <span className="pill">Support</span>
+              <h1>How can we help?</h1>
+              <p className="lead">
                 Questions about an {studio.name} app, a project we built for you, or this website?
                 Here’s how to reach us. We read every message and reply personally.
               </p>
@@ -30,21 +30,22 @@ export default function Support() {
             <Image className={styles.sticker} src={stickers.paw} alt="" sizes="140px" />
           </div>
 
-          <div className={styles.body}>
-            <div className={styles.cards}>
-              <div className={styles.card}>
-                <h2>Email support</h2>
-                <p>The fastest way to reach us about an app or an existing project.</p>
-                <p>{email}</p>
-              </div>
-              <div className={styles.card}>
-                <h2>Start a project</h2>
-                <p>Want to build something with us? Tell us about it on our contact form.</p>
-                <p>
-                  <Link href="/#contact">Go to the contact form →</Link>
-                </p>
-              </div>
+          <div className={styles.cards}>
+            <div className={`${styles.card} ${styles.body}`}>
+              <h2>Email support</h2>
+              <p>The fastest way to reach us about an app or an existing project.</p>
+              <p>{email}</p>
             </div>
+            <div className={`${styles.card} ${styles.cardOrange} ${styles.body}`}>
+              <h2>Start a project</h2>
+              <p>Want to build something with us? Send us a project brief.</p>
+              <p>
+                <Link href="/#start">Tell us about your project →</Link>
+              </p>
+            </div>
+          </div>
+
+          <div className={`${styles.sheet} ${styles.body}`}>
 
             <h2>App support</h2>
             <p>When you write in about one of our apps, these details help us help you faster:</p>

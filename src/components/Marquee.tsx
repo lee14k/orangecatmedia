@@ -1,19 +1,25 @@
+import { studio } from "@/content/studio";
 import styles from "./Marquee.module.css";
 
-type MarqueeProps = {
-  text: string;
-  tone?: "lime" | "orange" | "white";
-};
-
-export function Marquee({ text, tone = "lime" }: MarqueeProps) {
-  const chunk = `${text} · `;
-  const line = chunk.repeat(12);
-
+function Run() {
   return (
-    <div className={`${styles.marquee} ${styles[tone]}`} aria-hidden="true">
+    <span>
+      {studio.marquee.map((item) => (
+        <span key={item}>
+          {item}
+          <i>✦</i>
+        </span>
+      ))}
+    </span>
+  );
+}
+
+export function Marquee() {
+  return (
+    <div className={styles.marquee} aria-hidden="true">
       <div className={styles.track}>
-        <span>{line}</span>
-        <span>{line}</span>
+        <Run />
+        <Run />
       </div>
     </div>
   );

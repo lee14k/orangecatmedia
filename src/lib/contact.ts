@@ -6,13 +6,30 @@ const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 // One Railway service instance, so in-memory tracking is enough.
 const recentByIp = new Map<string, number[]>();
 
+// Optional project-brief fields and their max lengths.
+const OPTIONAL_FIELDS = {
+  stage: 100,
+  users: 300,
+  mustHaves: 1000,
+  links: 500,
+  budget: 100,
+  timeline: 100,
+  deadline: 200,
+  company: 200,
+  role: 200,
+  heard: 100,
+} as const;
+
+type OptionalField = keyof typeof OPTIONAL_FIELDS;
+
 export type ContactMessage = {
   name: string;
   email: string;
   message: string;
+  types: string[];
   // Honeypot: hidden from people, filled in by naive bots.
-  company: string;
-};
+  website: string;
+} & Record<OptionalField, string>;
 
 export class ContactNotConfigured extends Error {}
 
@@ -24,16 +41,29 @@ function field(body: Record<string, unknown>, key: string): string {
 export function parseContactMessage(body: unknown): ContactMessage | null {
   if (!body || typeof body !== "object") return null;
   const record = body as Record<string, unknown>;
-  const msg = {
-    name: field(record, "name"),
-    email: field(record, "email"),
-    message: field(record, "message"),
-    company: field(record, "company"),
-  };
-  if (msg.name.length < 1 || msg.name.length > 100) return null;
-  if (msg.email.length > 254 || !EMAIL_PATTERN.test(msg.email)) return null;
-  if (msg.message.length < 1 || msg.message.length > 5000) return null;
-  return msg;
+
+  const name = field(record, "name");
+  const email = field(record, "email");
+  const message = field(record, "message");
+  if (name.length < 1 || name.length > 100) return null;
+  if (email.length > 254 || !EMAIL_PATTERN.test(email)) return null;
+  if (message.length < 1 || message.length > 5000) return null;
+
+  const rawTypes = Array.isArray(record.types) ? record.types : [];
+  const types = rawTypes
+    .filter((t): t is string => typeof t === "string")
+    .map((t) => t.trim().slice(0, 60))
+    .filter(Boolean)
+    .slice(0, 10);
+
+  const optional = {} as Record<OptionalField, string>;
+  for (const [key, max] of Object.entries(OPTIONAL_FIELDS) as [OptionalField, number][]) {
+    const value = field(record, key);
+    if (value.length > max) return null;
+    optional[key] = value;
+  }
+
+  return { name, email, message, types, website: field(record, "website"), ...optional };
 }
 
 export function isRateLimited(ip: string): boolean {
@@ -48,11 +78,40 @@ export function isRateLimited(ip: string): boolean {
   return false;
 }
 
+function emailText(msg: ContactMessage): string {
+  const contact = [msg.role, msg.company].filter(Boolean).join(", ");
+  const lines = [
+    `From: ${msg.name} <${msg.email}>${contact ? ` (${contact})` : ""}`,
+    ["Building", msg.types.join(", ")],
+    ["Today", msg.stage],
+    ["Budget", msg.budget],
+    ["Timeline", [msg.timeline, msg.deadline].filter(Boolean).join(" · ")],
+    ["Heard via", msg.heard],
+  ]
+    .map((line) => (typeof line === "string" ? line : line[1] ? `${line[0]}: ${line[1]}` : ""))
+    .filter(Boolean);
+
+  const sections = [
+    ["About it", msg.message],
+    ["Users", msg.users],
+    ["Must-haves", msg.mustHaves],
+    ["Links", msg.links],
+  ]
+    .filter(([, value]) => value)
+    .map(([label, value]) => `${label}:\n${value}`);
+
+  return [lines.join("\n"), ...sections].join("\n\n");
+}
+
 export async function sendContactEmail(msg: ContactMessage): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
   const to = process.env.CONTACT_TO_EMAIL?.trim();
   const from = process.env.CONTACT_FROM_EMAIL?.trim();
   if (!apiKey || !to || !from) throw new ContactNotConfigured();
+
+  const subject = msg.types.length
+    ? `Project brief from ${msg.name}${msg.company ? ` (${msg.company})` : ""}`
+    : `Orange Cat Media inquiry from ${msg.name}`;
 
   const response = await fetch(RESEND_URL, {
     method: "POST",
@@ -61,8 +120,8 @@ export async function sendContactEmail(msg: ContactMessage): Promise<void> {
       from,
       to: [to],
       reply_to: msg.email,
-      subject: `Orange Cat Media inquiry from ${msg.name}`,
-      text: `From: ${msg.name} <${msg.email}>\n\n${msg.message}`,
+      subject,
+      text: emailText(msg),
     }),
     signal: AbortSignal.timeout(15_000),
   });

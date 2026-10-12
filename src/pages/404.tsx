@@ -3,6 +3,7 @@ import Link from "next/link";
 import { stickers } from "@/assets/stickers";
 import { Seo } from "@/components/Seo";
 import { SiteLayout } from "@/components/SiteLayout";
+import styles from "@/components/Prose.module.css";
 
 export default function NotFound() {
   return (
@@ -16,12 +17,14 @@ export default function NotFound() {
             sizes="220px"
             style={{ width: "min(220px, 50vw)", height: "auto", marginBottom: "2rem" }}
           />
-          <p className="section__eyebrow">404</p>
-          <h1 className="section__title">This page wandered off.</h1>
-          <p className="section__lede">
-            It might have moved, or it never existed. Let’s get you back somewhere useful.
-          </p>
-          <Link className="btn btn--orange" href="/">
+          <div className="section-head">
+            <span className="pill">404</span>
+            <h1 className={styles.title}>This page wandered off.</h1>
+            <p className="lead">
+              It might have moved, or it never existed. Let’s get you back somewhere useful.
+            </p>
+          </div>
+          <Link className="btn btn-orange" href="/">
             Back to the homepage
           </Link>
         </div>
